@@ -3,11 +3,11 @@
 <div class="jot-list">
 <ul>
 	[+jot.subscription.status:is=`0`:then=`
-	<li><a href="[+jot.link.subscribe:esc+]#jf[+jot.link.id+]" onclick="return confirm('Вы действительно хотите получать уведомления о комментариях на этот материал?');">Оповещать</a> о новых комментариях.</li>
+	<li><a href="[+jot.link.subscribe:esc+]#jf[+jot.link.id+]" onclick="return confirm('Are you sure you want to be notified of comments on this material?');">Inform</a> about new comments.</li>
 	`+]
 
 	[+jot.subscription.status:is=`1`:then=`
-	<li><a href="[+jot.link.unsubscribe:esc+]#jf[+jot.link.id+]" onclick="return confirm('Вы действительно не хотите получать уведомления о комментариях на этот материал?');">Не оповещать</a> о новых комментариях.</li>
+	<li><a href="[+jot.link.unsubscribe:esc+]#jf[+jot.link.id+]" onclick="return confirm('Are you really not wanting to be notified of comments on this material?');">Do not notify</a> about new comments.</li>
 	`+]
 </ul>
 </div>
