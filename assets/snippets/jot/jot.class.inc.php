@@ -784,12 +784,24 @@ class CJot {
 	function getMembersOfWebGroup($groupNames=array()) {
 		global $modx;
 		$usrIDs = array();
-		$tbl = $modx->getFullTableName("webgroup_names");
-		$tbl2 = $modx->getFullTableName("web_groups");
-		$sql = "SELECT distinct wg.webuser
+		// Evo v1, v2 and v3 friendly
+		// BBloke 22-12-21
+		if ( substr($modx->getConfig('settings_version'),0,1) > 2 )
+		{
+			$tbl = $modx->getFullTableName("membergroup_names");
+			$tbl2 = $modx->getFullTableName("member_groups");
+			$sql = "SELECT distinct wg.member
+						FROM $tbl wgn
+						INNER JOIN $tbl2 wg ON wg.user_group=wgn.id AND wgn.name IN ('" . implode("','",$groupNames) . "')";
+			$usrRows = $modx->db->getColumn("member", $sql);
+		} else {
+			$tbl = $modx->getFullTableName("webgroup_names");
+			$tbl2 = $modx->getFullTableName("web_groups");
+			$sql = "SELECT distinct wg.webuser
 						FROM $tbl wgn
 						INNER JOIN $tbl2 wg ON wg.webgroup=wgn.id AND wgn.name IN ('" . implode("','",$groupNames) . "')";
-		$usrRows = $modx->db->getColumn("webuser", $sql);
+			$usrRows = $modx->db->getColumn("webuser", $sql);
+		}
 		foreach ($usrRows as $v) $usrIDs[] = -intval($v);
 		return $usrIDs;
 	}	
