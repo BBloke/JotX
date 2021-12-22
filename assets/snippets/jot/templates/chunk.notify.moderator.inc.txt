@@ -1,19 +1,18 @@
-Уважаемый(ая) [+recipient.username+],
+Dear [+recipient.username+],
 
-В раздел, который вы модерируете, добавлен новый комментарий.
+A new comment has been added to the section you moderate.
 
 -----
-Имя: [+comment.custom.name+]
+Name: [+comment.custom.name+]
 Email: [+comment.custom.email+] 
-Тема: [+comment.title+]
-Сообщение:
+Subject: [+comment.title+]
+Message:
 
 [+comment.content+]
 -----
 
-Посмотреть все опубликованные комментарии: [+siteurl+][+jot.link.view+][+jot.querykey.view+]=1
-Посмотреть все неопубликованные комментарии: [+siteurl+][+jot.link.view+][+jot.querykey.view+]=0
+View all published comments: [+siteurl+][+jot.link.view+][+jot.querykey.view+]=1
+View all unpublished comments: [+siteurl+][+jot.link.view+][+jot.querykey.view+]=0
 
-С уважением,
-Администратор сайта
-
+Sincerely,
+Site Administrator
