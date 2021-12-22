@@ -1,18 +1,17 @@
-Уважаемый(ая) [+recipient.username+],
+Dear [+recipient.username+],
 
-В раздел, на который вы подписаны, добавлен новый комментарий.
+A new comment has been added to the section you follow.
 
 -----
-Имя: [+comment.custom.name+]
+Name: [+comment.custom.name+]
 Email: [+comment.custom.email+] 
-Тема: [+comment.title+]
-Сообщение:
+Subject: [+comment.title+]
+Message:
 
 [+comment.content+]
 -----
 
-Отписаться от уведомлений: [+siteurl+][+jot.link.unsubscribe+]
+Unsubscribe from notifications: [+siteurl+][+jot.link.unsubscribe+]
 
-С уважением,
-Администратор сайта
-
+Sincerely,
+Site Administrator
