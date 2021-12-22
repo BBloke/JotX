@@ -279,10 +279,20 @@ class CJotDataDb {
 				$where = " and published = 1 "; // Published
 		}
 		
-		$user_data_tbl="left join " . $modx->getFullTableName('manager_users') . " as mu on mu.id=a.createdby "
-			."left join " . $modx->getFullTableName('user_attributes') . " as mua on mua.internalKey=mu.id ";
-		$webuser_data_tbl="left join " . $modx->getFullTableName('web_users') . " as wu on wu.id=-a.createdby "
-			."left join " . $modx->getFullTableName('web_user_attributes') . " as wua on wua.internalKey=wu.id ";
+		// Allow old and new Evo modules!!!!!
+		// BBloke 22-12-21
+		if ( substr($modx->getConfig('settings_version'),0,1) > 2 )
+		{
+			$user_data_tbl="left join " . $modx->getFullTableName('users') . " as mu on mu.id=a.createdby "
+				."left join " . $modx->getFullTableName('user_attributes') . " as mua on mua.internalKey=mu.id ";
+			$webuser_data_tbl="left join " . $modx->getFullTableName('users') . " as wu on wu.id=-a.createdby "
+				."left join " . $modx->getFullTableName('user_attributes') . " as wua on wua.internalKey=wu.id ";
+		} else {
+			$user_data_tbl="left join " . $modx->getFullTableName('manager_users') . " as mu on mu.id=a.createdby "
+				."left join " . $modx->getFullTableName('user_attributes') . " as mua on mua.internalKey=mu.id ";
+			$webuser_data_tbl="left join " . $modx->getFullTableName('web_users') . " as wu on wu.id=-a.createdby "
+				."left join " . $modx->getFullTableName('web_user_attributes') . " as wua on wua.internalKey=wu.id ";
+		}
 		
 		$sql = "select a.*,mu.username,mua.fullname,mua.email,mua.role,mua.gender,mua.country,mua.photo
 		from " . $tbl . " as a " .$user_data_tbl." ".$tblcustom. " where a.createdby>=0 " . $this->sqlPart($docid,$tagid,$userid) . "and mode = '0' " . $where . " 
