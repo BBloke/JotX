@@ -1,16 +1,16 @@
 <a name="jotmod[+jot.link.id+]"></a>
 <div class="jot-list">
-<b>Модерация:</b>
+<b>Moderation:</b>
 <ul>
-<li>Сейчас вы видите <b>[+jot.moderation.view:select=`0=скрытые&1=опубликованные&2=все`+]</b> сообщения.</li>
+<li>Now You See <b>[+jot.moderation.view:select=`0=Hidden&1=Published&2=All`+]</b> Messages.</li>
 [+jot.moderation.view:isnt=`0`:then=`
-<li>Показать <a href="[+jot.link.view:esc+][+jot.querykey.view+]=0#jotmod[+jot.link.id+]">скрытые</a> сообщения ([+jot.moderation.unpublished+])</li>
+<li>Show <a href="[+jot.link.view:esc+][+jot.querykey.view+]=0#jotmod[+jot.link.id+]"> Hidden</a> messages ([+jot.moderation.unpublished+])</li>
 `:strip+]
 [+jot.moderation.view:isnt=`1`:then=`
-<li>Показать <a href="[+jot.link.view:esc+][+jot.querykey.view+]=1#jotmod[+jot.link.id+]">опубликованные</a> сообщения ([+jot.moderation.published+])</li>
+<li>Show <a href="[+jot.link.view:esc+][+jot.querykey.view+]=1#jotmod[+jot.link.id+]">Published</a> messages ([+jot.moderation.published+])</li>
 `:strip+]
 [+jot.moderation.view:isnt=`2`:then=`
-<li>Показать <a href="[+jot.link.view:esc+][+jot.querykey.view+]=2#jotmod[+jot.link.id+]">все</a> сообщения ([+jot.moderation.mixed+])</li>
+<li>Show <a href="[+jot.link.view:esc+][+jot.querykey.view+]=2#jotmod[+jot.link.id+]">All</a> messages ([+jot.moderation.mixed+])</li>
 `:strip+]
 </ul>
 </div>
