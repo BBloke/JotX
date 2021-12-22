@@ -15,14 +15,15 @@ All parameters and templates can be specified in one file.
     [!JotX? &action=`lastcomments` !] - Последние комментарии
 ```
 
-###New settings.
+### New settings.
 * **notifyEmails** - subscribing to specific addresses
 * **subjectEmails** - the header of the emails for this newsletter
 * **subscriber** - the name of the recipient for this newsletter, if not specified (by default "subscriber")
 * **tplNotifyEmails** - template for this newsletter
 
 ```php
-    [!JotX? &notifyEmails=`user1@site.ru:Подписчик 1,user2@site.ru:Подписчик 2,user3@site.ru` !]
+    [!JotX? &notifyEmails=`user1@site.ru:Subscriber 1,user2@site.ru:Subscriber 2,user3@site.ru` !]
+```
 
 * **docids** - docid list, you can specify ranges
 * **tagids** - list of tagid, separated by comma
@@ -30,10 +31,10 @@ All parameters and templates can be specified in one file.
 * **limit** - limit the number of comments
 
 ```php
-    [!JotX? &action=`lastcomments` &limit=`10` !] - 10 последних комментариев со всего сайта
-    [!JotX? &docids=`*` &sortby=`rand()` &limit=`1` !] - случайный комментарий со всего сайта
-    [!JotX? &docids=`1,2,5-10,20*,30-35,40**,` !] - так тоже можно :)
-    ```
+    [!JotX? &action=`lastcomments` &limit=`10` !] - 10 latest comments from around the site
+    [!JotX? &docids=`*` &sortby=`rand()` &limit=`1` !] - random comment from all over the site
+    [!JotX? &docids=`1,2,5-10,20*,30-35,40**,` !] - and you can also :)
+```
 The docids and tagids parameters are used to output data, docid and tagid are used to enter current data, so they are separated
 
 * **depth** - depth of tree comments (default 10)
@@ -43,14 +44,14 @@ The docids and tagids parameters are used to output data, docid and tagid are us
 
 Page-by-page navigation
 
-* **tplNavPage - template for page number design
-* **tplNavPageCur - template for designing the current page number
-* **tplNavPageSpl - page number separator
-* **tplNavPageDots - pagination break (ellipsis by default)
-* **pageAdjacents - number of pages before and after the current one (default 2)
+* **tplNavPage** - template for page number design
+* **tplNavPageCur** - template for designing the current page number
+* **tplNavPageSpl** - page number separator
+* **tplNavPageDots** - pagination break (ellipsis by default)
+* **pageAdjacents** - number of pages before and after the current one (default 2)
 
 ### Events.
-B Each of the two classes has its own.
+Each of the two classes has its own.
 
 onBeforeConfiguration,onBeforeRunActions,onRunActions,onConfiguration,onBeforeFirstRun, onFirstRun,onSubscriptionCheck,onDeleteComment,onGetCommentFields,onBeforeSaveComment, onSaveComment,onGetSubscriptions,onBeforeGetSubscriptions,onBeforeGetUserInfo, onBeforeNotify,onBeforeSubscribe,onBeforeUnsubscribe,onBeforeValidateFormField, onValidateFormFieldFail,onBeforePOSTProcess,onProcessForm,onBeforeProcessPassiveActions, onProcessPassiveActions, onBeforeGetCommentCount,onBeforeGetComments,onGetComments, onReturnOutput,onSetDefaultOutput,onBeforeGetUserPostCount,onSetFormOutput,onSetCommentsOutput
 
@@ -61,7 +62,7 @@ They can be loaded both from snippets and from files. Can be written separated b
     [!JotX? &onBeforeValidateFormField=`nolink,onlyrus` !]
 ```
 
-B The composition includes plugins:
+The composition includes plugins:
 
 * **subscribe** (events: onBeforeFirstRun,onSaveComment,onBeforeRunActions,onBeforeProcessPassiveActions,onGetSubscriptions,onBeforeGetUserInfo,onBeforeNotify) - subscription of site guests to notifications about new comments. Also need 2 fixes in the templates: checkbox and unsubscribe text, see the example in tree.config.php
 * **ajax** (events: onSetCommentsOutput,onSetFormOutput,onReturnOutput) - loading only via ajax
